@@ -1,180 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .chat-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-box {
+    height: 300px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  #message-input {
+    width: 80%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  #send-button {
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  </style>
   <title>Chat with Friends</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-  <div id="chat-container">
-    <div id="chat-messages"></div>
+  <div class="chat-container">
+    <div class="chat-box" id="chat-box">
+      <!-- Chat messages will be displayed here -->
+    </div>
     <input type="text" id="message-input" placeholder="Type your message...">
     <button id="send-button">Send</button>
   </div>
-  <style>
-    #chat-container {
-        width: 400px;
-        margin: 0 auto;
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    const chatBox = document.getElementById("chat-box");
+    const messageInput = document.getElementById("message-input");
+    const sendButton = document.getElementById("send-button");
+  
+    sendButton.addEventListener("click", function() {
+      const message = messageInput.value;
+      if (message.trim() !== "") {
+        appendMessage("You", message);
+        messageInput.value = "";
       }
-      
-      #chat-messages {
-        height: 300px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        overflow-y: scroll;
-        
-      }
-      
-      #message-input {
-        width: 300px;
-        padding: 5px;
-      }
-      
-      #send-button {
-        padding: 5px 10px;
-      } 
-     /* Chat container */
-.chat-container {
-  width: 100%;
-  height: 400px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
-/* Chat message */
-.chat-message {
-  margin-bottom: 10px;
-}
-
-/* Sender's message */
-.sender-message {
-  background-color: #f1f0f0;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-/* Receiver's message */
-.receiver-message {
-  background-color: #e2f7fd;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
-
-/* Message timestamp */
-.message-timestamp {
-  font-size: 12px;
-  color: #888;
-}
-
-/* Chat input box */
-.chat-input {
-  width: 100%;
-  padding: 10px;
-}
-
-/* Send button */
-.send-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.send-button:hover {
-  background-color: #45a049;
-} </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var messageInput = document.getElementById('message-input');
-      var sendButton = document.getElementById('send-button');
-      var chatMessages = document.getElementById('chat-messages');
-    
-      sendButton.addEventListener('click', function() {
-        var message = messageInput.value.trim();
-        if (message !== '') {
-          var messageElement = document.createElement('p');
-          messageElement.textContent = message;
-          chatMessages.appendChild(messageElement);
-          messageInput.value = '';
-        }
-      });
-    
-      messageInput.addEventListener('keydown', function(event) {
-        if (event.keyCode === 13) { // Enter key
-          sendButton.click();
-        }
-      });
     });
-    </script>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-     <h1>Login form </h1> 
-     <br>
-     <form action="/action.php">
-    <p>User ID</p><input type="text" placeholder="Enter yor user ID">
-    <p>password</p><input type="password" placeholder="Enter your password">  </form>
-    <br>
-    <p>select your state</p>
-    <select states="states"id="states">
-        <option value="Andhra Pradesh">Andhra Pradesh</option>
-        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-        <option value="Assam">Assam</option>
-        <option value="Bihar">Bihar</option>
-        <option value="Chhattisgarh">Chhattisgarh</option>
-        <option value="Goa">Goa</option>
-        <option value="Gujarat">Gujarat</option>
-        <option value="Haryana">Haryana</option>
-        <option value="Himachal Pradesh">Himachal Pradesh</option>
-        <option value="Jharkhand">Jharkhand</option>
-        <option value="Karnataka">Karnataka</option>
-        <option value="Kerala">Kerala</option>
-        <option value="Madhya Pradesh">Madhya Pradesh</option>
-        <option value="Maharashtra">Maharashtra</option>
-        <option value="Manipur">Manipur</option>
-        <option value="Meghalaya">Meghalaya</option>
-        <option value="Mizoram">Mizoram</option>
-        <option value="Nagaland">Nagaland</option>
-        <option value="Odisha">Odisha</option>
-        <option value="Punjab">Punjab</option>
-        <option value="Rajasthan">Rajasthan</option>
-        <option value="Sikkim">Sikkim</option>
-        <option value="Tamil Nadu">Tamil Nadu</option>
-        <option value="Telangana">Telangana</option>
-        <option value="Tripura">Tripura</option>
-        <option value="Uttar Pradesh">Uttar Pradesh</option>
-        <option value="Uttarakhand">Uttarakhand</option>
-        <option value="West Bengal">West Bengal</option>
-    </select>
-    <br>
-    <p>Select your gender</p> <labelfor="id1">
-        <input type="radio" value="Male" name="gender" id="id1"/> Male
-    </label>
-    <labelfor="id2">
-        <input type="radio" value="Female" name="gender" id="id2"/>Female
-    </labelfor>
-    <labelfor="id3">
-        <input type="radio" value="other" name="gender" id="id3"/>other
-    </labelfor>
-    <br>
-    <form action="/action.php">
-        <p>Email ID</p><input type="email" placeholder="Enter yor Email ID">
-        </form>
-        <form action="/action.php">
-            <p>Adress</p><input type="paragraph" placeholder="Enter yor Adress">
-            </form>
-            <form action="/action.php">
-                <p>Age</p><input type="number" placeholder="Enter yor Age">
-                </form>
-            
-              
-    </html>
- 
+  
+    messageInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        sendButton.click();
+        event.preventDefault();
+      }
+    });
+  
+    function appendMessage(sender, message) {
+      const messageElement = document.createElement("div");
+      messageElement.className = "message";
+      messageElement.textContent = sender + ": " + message;
+      chatBox.appendChild(messageElement);
+    }
+  });
+  </script> 
 </body>
 </html>
